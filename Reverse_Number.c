@@ -15,18 +15,12 @@ int reverse(int x) {
 }
 
 int main() {
-    double num;
-    int intPart;
-    
-    // Input a double number from the user
+    int num;
     printf("Enter a number: ");
-    scanf("%lf", &num);
-    
-    // Extract integer part of the double
-    intPart = (int) num;
+    scanf("%d", &num);
     
     // Call the reverse function and print the result
-    printf("Reversed integer part: %d\n", reverse(intPart));
+    printf("Reversed integer: %d\n", reverse(num));
     
     return 0;
 }
