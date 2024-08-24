@@ -1,15 +1,21 @@
 #include <stdio.h>
 
-int main() {
-    int num1, num2, minMultiple, hcf, lcm;
-
-    printf("Enter two integers: ");
-    scanf("%d %d", &num1, &num2);
-
-    for (int i = 1; i <= num1 && i <= num2; ++i) {
-        if (num1 % i == 0 && num2 % i == 0)
-            hcf = i;
+#include<stdio.h>
+int main(){
+    long int a =20000;
+    long int b=24000;
+    long int max = b;
+    long int min= a;
+    long int lcm;
+    while (max%min!=0){
+        long int rem= max%min;
+        max = min;
+        min = rem;
+        rem=max%min;
+        
     }
+    long int HCF=min;
+    
 
     lcm = (num1 * num2) / hcf;
 
