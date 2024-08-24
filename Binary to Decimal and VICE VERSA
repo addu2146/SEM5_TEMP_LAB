@@ -1,0 +1,78 @@
+#include <stdio.h>
+
+// Function to convert binary (base-2) to decimal (base-10)
+long long bin_to_l_dec(long long binary) {
+    long long decimal = 0;  // This will store our final decimal result
+    long long base = 1;      // We start with 2^0 which is 1
+
+    // Process each digit of the binary number from right to left
+    while (binary > 0) {
+        int last_digit = binary % 10; // Get the rightmost digit (0 or 1)
+
+        // Add the digit's contribution to the decimal result
+        decimal = decimal + (last_digit * base); 
+
+        // Prepare for the next digit (next higher power of 2)
+        base = base * 2;  
+
+        // Remove the processed digit from the binary number
+        binary = binary / 10; 
+    }
+
+    return decimal; // Return the calculated decimal value
+}
+
+// Function to convert decimal (base-10) to binary (base-2)
+long long decimalToBinary(int decimal) {
+    long long binary = 0;    // This will store our final binary result
+    int remainder;
+    int i = 1;               // We start building the binary number from the right
+
+    // Keep dividing the decimal number by 2 until it becomes 0
+    while (decimal != 0) {
+        remainder = decimal % 2;  // Get the remainder (0 or 1) after dividing by 2
+        decimal = decimal / 2;    // Update the decimal number for the next iteration
+
+        // Add the remainder to the binary result at the correct position
+        binary = binary + (remainder * i); 
+
+        // Prepare for the next digit (shift the position to the left)
+        i = i * 10; 
+    }
+
+    return binary; // Return the calculated binary value
+}
+
+int main() {
+    int choice;
+    int decimal;
+    long long binary;
+
+    // Ask the user what they want to convert
+    printf("Choose conversion:\n");
+    printf("1. Binary to Decimal\n");
+    printf("2. Decimal to Binary\n");
+    scanf("%d", &choice);
+
+    // Perform the conversion based on the user's choice
+    switch (choice) {
+        case 1: // Binary to Decimal
+            printf("Enter a binary number: ");
+            scanf("%lld", &binary);
+            decimal = bin_to_l_dec(binary);
+            printf("Decimal equivalent: %d\n", decimal);
+            break;
+
+        case 2: // Decimal to Binary
+            printf("Enter a decimal number: ");
+            scanf("%d", &decimal);
+            binary = decimalToBinary(decimal);
+            printf("Binary equivalent: %lld\n", binary);
+            break;
+
+        default:
+            printf("Invalid choice!\n");
+    }
+
+    return 0;
+}
