@@ -1,88 +1,61 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public class SimpleArrayOperations {
-    private ArrayList<Integer> arrayList;
-
-    public SimpleArrayOperations() {
-        arrayList = new ArrayList<>();
-    }
-
-    public void addElement(int element) {
-        arrayList.add(element);
-        System.out.println("Added " + element + " to the array.");
-    }
-
-    public void removeElement(int element) {
-        if (arrayList.contains(element)) {
-            arrayList.remove(Integer.valueOf(element)); // Remove the first occurrence
-            System.out.println("Removed " + element + " from the array.");
-        } else {
-            System.out.println("Element " + element + " not found in the array.");
-        }
-    }
-
-    public void displayArray() {
-        System.out.println("Current array: " + arrayList);
-    }
-
-    public void getLength() {
-        int length = arrayList.size();
-        System.out.println("Array length: " + length);
-    }
-
-    public void accessElement(int index) {
-        if (index >= 0 && index < arrayList.size()) {
-            System.out.println("Element at index " + index + ": " + arrayList.get(index));
-        } else {
-            System.out.println("Index out of range.");
-        }
-    }
+public class ArrayOperations {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        SimpleArrayOperations operations = new SimpleArrayOperations();
-        
-        while (true) {
-            System.out.println("\nChoose an operation:");
-            System.out.println("1. Add element");
-            System.out.println("2. Remove element");
-            System.out.println("3. Display array");
-            System.out.println("4. Get length of array");
-            System.out.println("5. Access element by index");
-            System.out.println("6. Exit");
+        int[] numbers = {5, 3, 8, 1, 2, 7};  // Example array
 
-            int choice = scanner.nextInt();
+        System.out.println("Array: ");
+        printArray(numbers);
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter element to add: ");
-                    int addElem = scanner.nextInt();
-                    operations.addElement(addElem);
-                    break;
-                case 2:
-                    System.out.print("Enter element to remove: ");
-                    int removeElem = scanner.nextInt();
-                    operations.removeElement(removeElem);
-                    break;
-                case 3:
-                    operations.displayArray();
-                    break;
-                case 4:
-                    operations.getLength();
-                    break;
-                case 5:
-                    System.out.print("Enter index to access: ");
-                    int index = scanner.nextInt();
-                    operations.accessElement(index);
-                    break;
-                case 6:
-                    System.out.println("Exiting...");
-                    scanner.close();
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please enter a number between 1 and 6.");
+        System.out.println("Sum: " + sum(numbers));
+        System.out.println("Average: " + average(numbers));
+        System.out.println("Minimum: " + min(numbers));
+        System.out.println("Maximum: " + max(numbers));
+    }
+
+    // Function to calculate the sum of array elements
+    public static int sum(int[] array) {
+        int total = 0;
+        for (int num : array) {
+            total += num;
+        }
+        return total;
+    }
+
+    // Function to calculate the average of array elements
+    public static double average(int[] array) {
+        if (array.length == 0) return 0;
+        return (double) sum(array) / array.length;
+    }
+
+    // Function to find the minimum element in the array
+    public static int min(int[] array) {
+        if (array.length == 0) throw new IllegalArgumentException("Array is empty");
+        int minValue = array[0];
+        for (int num : array) {
+            if (num < minValue) {
+                minValue = num;
             }
         }
+        return minValue;
+    }
+
+    // Function to find the maximum element in the array
+    public static int max(int[] array) {
+        if (array.length == 0) throw new IllegalArgumentException("Array is empty");
+        int maxValue = array[0];
+        for (int num : array) {
+            if (num > maxValue) {
+                maxValue = num;
+            }
+        }
+        return maxValue;
+    }
+
+    // Utility function to print the array
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
     }
 }
