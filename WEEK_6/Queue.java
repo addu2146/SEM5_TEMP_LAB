@@ -48,8 +48,9 @@ public class Queue {
             System.out.println("Queue empty");
         }
         else{
-            for(int i = 0;i<QueueArray.length;i++){
-                System.out.println(QueueArray[i]);
+
+            for (int j : QueueArray) {
+                System.out.println(j);
             }
         }
     }
