@@ -43,6 +43,16 @@ public class Queue {
             System.out.println("The back element is: " + QueueArray[back]);
         }
     }
+    void Display(){
+        if (front==-1){
+            System.out.println("Queue empty");
+        }
+        else{
+            for(int i = 0;i<QueueArray.length;i++){
+                System.out.println(QueueArray[i]);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         Queue queue = new Queue(5);
@@ -54,5 +64,6 @@ public class Queue {
         queue.peek();
         queue.deque();
         queue.peek();
+        queue.Display();
     }
 }
