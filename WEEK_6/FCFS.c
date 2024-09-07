@@ -23,7 +23,7 @@ Process SelectforEnque(Process p[], int num_Processes);
 void execute(int num_processes);
 
 int main() {
-     // Printing FCFS pattern horizontally
+     
     printf("21462       21462       21462      21462\n");
     printf("1           1           1          1    \n");
     printf("46214       4           46214      46214\n");
@@ -31,8 +31,7 @@ int main() {
     printf("2           21462       2          21462\n");
     
     
-    printf("\n\n\n");  // Create some space for positioning
-
+    printf("\n\n\n"); 
     
     int num_processes;
     printf("Enter The Number of Processes You Want to Get executed\n");
