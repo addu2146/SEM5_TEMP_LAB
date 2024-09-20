@@ -34,6 +34,7 @@ int main(){
     for ( i = 0; i < num_processes; i++) {
         printf("Enter the burst time of Process %d:\n", i + 1);
         scanf("%d", &Batch[i].bt);
+        Batch[i].at=0;
         Batch[i].pnum = i + 1;  // Assign process ID
     }
     
@@ -81,7 +82,7 @@ void enque(Process p) {
         printf("ReadyQueue is full, wait for a process to complete\n");
     } else {
         ReadyQueue[back++] = p;  // Insert process in the queue
-        printf("Process %d was fetched to the Ready queue\n", p.pnum);
+//printf("Process %d was fetched to the Ready queue\n", p.pnum);
     }
 }
 Process deque() {
@@ -90,7 +91,7 @@ Process deque() {
         Process empty = {0, 0};
         return empty;  // Return an empty process if the queue is empty
     } else {
-        ReadyQueue[front+1].at= ReadyQueue[front].bt;
+        // ReadyQueue[front+1].at= ReadyQueue[front].bt;
         return ReadyQueue[front++];  // Dequeue the front process
         
     }
@@ -101,10 +102,12 @@ void execute(int num_processes) {
     while (front < back) {
         Process p = deque();
         
-        printf("Process %d is sent to the CPU\n", p.pnum);
-            
+        printf("Process %d with Arrival time : %d and burst time : %d sent to the CPU at %d time\n",p.pnum,p.at,p.bt,current_time);
+             wt = current_time - p33;
+             current_time += p.bt;
             // Calculate waiting time
-            wt = current_time - p.at;
+            
+            
             if (wt < 0) wt = 0;  // If a process arrives late, waiting time is 0
             
             // Calculate turnaround time (waiting time + burst time)
@@ -115,8 +118,8 @@ void execute(int num_processes) {
             total_tt += tt;
             
             // Update the current time to reflect the time after the process has finished executing
-            current_time += p.bt;
-            printf("Process %d has been executed successfully\n", p.pnum);
+            
+           // printf("Process %d has been executed successfully\n", p.pnum);
             printf("Waiting time: %d, Turnaround time: %d\n", wt, tt);
         }
         // Calculate average waiting time and average turnaround time
@@ -127,4 +130,3 @@ void execute(int num_processes) {
     printf("\nAverage Waiting Time: %f\n", avg_wt);
     printf("Average Turnaround Time: %f\n", avg_tt);
     }
-
