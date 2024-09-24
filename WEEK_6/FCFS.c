@@ -1,5 +1,5 @@
 #include <stdio.h>
-//#include<brain.addu2146>
+//#include<brain.addu2146>>
 // Non-preemptive FCFS 
 typedef struct {
     int pnum;  // Process ID
