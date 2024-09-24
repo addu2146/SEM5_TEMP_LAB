@@ -103,7 +103,7 @@ void execute(int num_processes) {
         Process p = deque();
         
         printf("Process %d with Arrival time : %d and burst time : %d sent to the CPU at %d time\n",p.pnum,p.at,p.bt,current_time);
-             wt = current_time - p33;
+             wt = current_time - p.at;
              current_time += p.bt;
             // Calculate waiting time
             
