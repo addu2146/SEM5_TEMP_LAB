@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-struct Process {
+typedef struct {
     int id;
     int burst_time;
     int priority;
     int waiting_time;
     int turnaround_time;
-};
+}Process;
 
-void findWaitingTime(struct Process processes[], int n) {
+void findWaitingTime( Process processes[], int n) {
     processes[0].waiting_time = 0; // First process has no waiting time
 
     for (int i = 1; i < n; i++) {
@@ -16,18 +16,18 @@ void findWaitingTime(struct Process processes[], int n) {
     }
 }
 
-void findTurnaroundTime(struct Process processes[], int n) {
+void findTurnaroundTime( Process processes[], int n) {
     for (int i = 0; i < n; i++) {
         processes[i].turnaround_time = processes[i].burst_time + processes[i].waiting_time;
     }
 }
 
-void sortByPriority(struct Process processes[], int n) {
+void sortByPriority( Process processes[], int n) {
     // Simple bubble sort based on priority
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (processes[j].priority > processes[j + 1].priority) {
-                struct Process temp = processes[j];
+                Process temp = processes[j];
                 processes[j] = processes[j + 1];
                 processes[j + 1] = temp;
             }
@@ -35,7 +35,7 @@ void sortByPriority(struct Process processes[], int n) {
     }
 }
 
-void findAvgTime(struct Process processes[], int n) {
+void findAvgTime( Process processes[], int n) {
     findWaitingTime(processes, n);
     findTurnaroundTime(processes, n);
 
@@ -56,7 +56,7 @@ int main() {
     printf("Enter the number of processes: ");
     scanf("%d", &n);
 
-    struct Process processes[n];
+     Process Readyqueue[n];
 
     for (int i = 0; i < n; i++) {
         processes[i].id = i + 1; // Assigning process IDs
@@ -67,9 +67,9 @@ int main() {
     }
 
     // Sort processes by priority
-    sortByPriority(processes, n);
+    sortByPriority(Readyqueue, n);
 
-    findAvgTime(processes, n);
+    findAvgTime(Readyqueue, n);
 
     return 0;
 }
