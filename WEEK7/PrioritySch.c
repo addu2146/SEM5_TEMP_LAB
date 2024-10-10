@@ -59,11 +59,11 @@ int main() {
      Process Readyqueue[n];
 
     for (int i = 0; i < n; i++) {
-        processes[i].id = i + 1; // Assigning process IDs
-        printf("Enter burst time for Process %d: ", processes[i].id);
-        scanf("%d", &processes[i].burst_time);
-        printf("Enter priority for Process %d (lower number means higher priority): ", processes[i].id);
-        scanf("%d", &processes[i].priority);
+        Readyqueue[i].id = i + 1; // Assigning process IDs
+        printf("Enter burst time for Process %d: ", Readyqueue[i].id);
+        scanf("%d", &Readyqueue[i].burst_time);
+        printf("Enter priority for Process %d (lower number means higher priority): ", Readyqueue[i].id);
+        scanf("%d", &Readyqueue[i].priority);
     }
 
     // Sort processes by priority
